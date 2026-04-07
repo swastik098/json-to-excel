@@ -10,10 +10,9 @@ import "./Hero.css";
 
 const FORMAT_BADGES = ["JSON", "Excel", "CSV", "XML"];
 
-export function Hero({ totalConversions }) {
+export function Hero({ totalConversions, shouldAnimate = false }) {
   return (
     <section className="hero" aria-label="Hero banner">
-
       {/* Decorative animated background layers */}
       <div className="hero__bg" aria-hidden="true">
         <div className="hero__bg-orb hero__bg-orb--a" />
@@ -23,7 +22,6 @@ export function Hero({ totalConversions }) {
       </div>
 
       <div className="hero__inner">
-
         {/* Creator badge */}
         <div className="hero__creator-badge">
           <span className="hero__creator-dot" aria-hidden="true" />
@@ -39,7 +37,9 @@ export function Hero({ totalConversions }) {
             <span key={f} className="hero__badge-format">
               {f}
               {i < FORMAT_BADGES.length - 1 && (
-                <span className="hero__badge-sep" aria-hidden="true">·</span>
+                <span className="hero__badge-sep" aria-hidden="true">
+                  ·
+                </span>
               )}
             </span>
           ))}
@@ -49,15 +49,14 @@ export function Hero({ totalConversions }) {
         <h1 className="hero__title">
           <span className="hero__title-line">Forge Your</span>
           <br />
-          <span className="hero__title-gradient">Data</span>
-          {" "}
+          <span className="hero__title-gradient">Data</span>{" "}
           <span className="hero__title-gradient2">Instantly</span>
         </h1>
 
         <p className="hero__sub">
           Transform JSON, Excel, CSV &amp; XML files in seconds —{" "}
-          <strong>entirely in your browser.</strong>{" "}
-          No uploads. No servers. Zero compromise.
+          <strong>entirely in your browser.</strong> No uploads. No servers.
+          Zero compromise.
         </p>
 
         {/* CTA arrow hint */}
@@ -66,7 +65,10 @@ export function Hero({ totalConversions }) {
           <span className="hero__cta-arrow">↓</span>
         </div>
 
-        <StatsBar totalConversions={totalConversions} />
+        <StatsBar
+          totalConversions={totalConversions}
+          shouldAnimate={shouldAnimate}
+        />
       </div>
     </section>
   );
