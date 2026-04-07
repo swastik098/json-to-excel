@@ -15,12 +15,16 @@ export function History({ items }) {
   return (
     <section className="history" aria-label="Recent conversions">
       <h2 className="history__heading">Recent Conversions</h2>
-      <ul className="history__list" role="list">
+      <ul className="history__list">
         {items.map((item, i) => (
           <li key={i} className="history-item">
-            <span className="history-item__icon" aria-hidden="true">{item.icon}</span>
+            <span className="history-item__icon" aria-hidden="true">
+              {item.icon}
+            </span>
             <div className="history-item__info">
-              <span className="history-item__name truncate">{item.fileName}</span>
+              <span className="history-item__name truncate">
+                {item.fileName}
+              </span>
               <span className="history-item__meta">
                 {item.from} → {item.to} · {item.time}
               </span>

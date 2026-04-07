@@ -11,10 +11,12 @@ export function Features() {
   return (
     <section className="features" aria-label="Features">
       <h2 className="section-heading">Why DataForge?</h2>
-      <ul className="features-grid" role="list">
+      <ul className="features-grid">
         {FEATURES.map((f) => (
           <li key={f.title} className="feature-card">
-            <span className="feature-card__icon" aria-hidden="true">{f.icon}</span>
+            <span className="feature-card__icon" aria-hidden="true">
+              {f.icon}
+            </span>
             <h3 className="feature-card__title">{f.title}</h3>
             <p className="feature-card__desc">{f.desc}</p>
           </li>
