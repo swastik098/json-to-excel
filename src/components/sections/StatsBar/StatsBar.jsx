@@ -98,7 +98,7 @@ export function StatsBar({ totalConversions = 0 }) {
       isAnimated: true,
     },
     { key: "formats", value: 8, label: "Formats", isAnimated: false },
-    { key: "size", value: "unlimited", label: "File Size", isAnimated: false },
+    { key: "size", value: "1GB", label: "File Size", isAnimated: false },
     { key: "price", value: "100%", label: "Free", isAnimated: false },
   ];
 
