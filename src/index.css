@@ -1,13 +1,19 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
+/* ─────────────────────────────────────────────────────────────────────────────
+   index.css — Global Entry Point
+   Import order: variables → base → animations → components → fonts
+───────────────────────────────────────────────────────────────────────────── */
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
-}
+/* 1. CSS Custom Properties (light/dark tokens) */
+@import "./styles/variables.css";
+
+/* 2. Reset & base typography */
+@import "./styles/base.css";
+
+/* 3. Reusable keyframe animations */
+@import "./styles/animations.css";
+
+/* 4. Global component styles (portals that render at body level) */
+@import "./components/common/Toast/Toast.css";
+
+/* 5. Google Fonts — Inter UI + Fira Code monospace */
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Fira+Code:wght@400;500&display=swap");

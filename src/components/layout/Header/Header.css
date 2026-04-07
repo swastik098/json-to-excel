@@ -1,0 +1,134 @@
+/* Header.css — DataForge by Swastik — Futuristic sticky header */
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 200;
+  background: var(--bg-header);
+  backdrop-filter: blur(28px) saturate(200%);
+  -webkit-backdrop-filter: blur(28px) saturate(200%);
+  border-bottom: 1px solid rgba(167, 139, 250, 0.08);
+}
+
+/* Animated neon gradient underline */
+.header::after {
+  content: "";
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 1px;
+  background: linear-gradient(90deg,
+    transparent 0%,
+    rgba(0, 212, 255, 0.5) 20%,
+    rgba(167, 139, 250, 0.6) 45%,
+    rgba(236, 72, 153, 0.5) 70%,
+    rgba(0, 212, 255, 0.4) 85%,
+    transparent 100%);
+  background-size: 200% auto;
+  animation: gradientShift 5s linear infinite;
+}
+
+.header-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 var(--space-8);
+  height: 66px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-4);
+}
+
+/* ── Brand ──────────────────────────────────────────────────────────────── */
+.header-brand {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  flex-shrink: 0;
+}
+
+.header-logo-icon {
+  font-size: 1.5rem;
+  filter: drop-shadow(0 0 12px rgba(0, 212, 255, 0.8));
+  animation: glowPulse 3s ease-in-out infinite;
+}
+
+.header-logo-text {
+  font-size: 1.35rem;
+  font-weight: 900;
+  letter-spacing: -0.04em;
+  background: linear-gradient(135deg, #00d4ff 0%, #a78bfa 45%, #e879f9 100%);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: gradientShift 5s ease infinite;
+}
+
+.header-by-swastik {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  background: linear-gradient(135deg, #a78bfa, #e879f9);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  opacity: 0.85;
+  padding: 0.1rem 0.5rem;
+  border: 1px solid rgba(167, 139, 250, 0.25);
+  border-radius: var(--radius-full);
+  white-space: nowrap;
+}
+
+.header-tagline {
+  color: #3d3870;
+  font-size: 0.68rem;
+  font-weight: 500;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  border-left: 1px solid rgba(100, 80, 180, 0.3);
+  padding-left: var(--space-3);
+  white-space: nowrap;
+}
+
+/* ── Nav ────────────────────────────────────────────────────────────────── */
+.header-nav {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.theme-toggle {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  background: rgba(167, 139, 250, 0.06);
+  border: 1px solid rgba(167, 139, 250, 0.18);
+  color: #9d99cc;
+  padding: 0.4rem 1rem;
+  border-radius: var(--radius-full);
+  font-size: 0.82rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition:
+    background var(--transition-fast),
+    border-color var(--transition-fast),
+    color var(--transition-fast),
+    transform var(--transition-fast),
+    box-shadow var(--transition-fast);
+  white-space: nowrap;
+}
+
+.theme-toggle:hover {
+  background: rgba(0, 212, 255, 0.1);
+  border-color: rgba(0, 212, 255, 0.35);
+  color: #00d4ff;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 16px rgba(0, 212, 255, 0.2);
+}
+
+/* ── Responsive ─────────────────────────────────────────────────────────── */
+@media (max-width: 640px) {
+  .header-inner { padding: 0 var(--space-4); height: 58px; }
+  .header-tagline { display: none; }
+  .header-by-swastik { display: none; }
+  .header-logo-text { font-size: 1.15rem; }
+}

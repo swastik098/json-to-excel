@@ -1,0 +1,105 @@
+/* ─────────────────────────────────────────────────────────────────────────────
+   animations.css — Reusable CSS Keyframe Animations
+───────────────────────────────────────────────────────────────────────────── */
+
+/* ── Entrance ────────────────────────────────────────────────────────────── */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(18px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideDown {
+  from { opacity: 0; transform: translateY(-18px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes scalePop {
+  0%   { transform: scale(0.88); opacity: 0; }
+  60%  { transform: scale(1.04); }
+  100% { transform: scale(1);   opacity: 1; }
+}
+
+/* ── Toast ───────────────────────────────────────────────────────────────── */
+@keyframes toastIn {
+  from { opacity: 0; transform: translateX(60px) scale(0.9); }
+  to   { opacity: 1; transform: translateX(0)    scale(1);   }
+}
+
+/* ── Loaders ─────────────────────────────────────────────────────────────── */
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0.72; }
+}
+
+/* ── Progress shimmer ────────────────────────────────────────────────────── */
+@keyframes progressShimmer {
+  0%   { background-position:  200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+/* ── Gradient text shift ─────────────────────────────────────────────────── */
+@keyframes gradientShift {
+  0%   { background-position: 0%   50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0%   50%; }
+}
+
+/* ── Floating (gentle up-down) ───────────────────────────────────────────── */
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50%       { transform: translateY(-8px); }
+}
+
+/* ── Glow pulse ──────────────────────────────────────────────────────────── */
+@keyframes glowPulse {
+  0%, 100% { box-shadow: 0 0 20px rgba(96, 165, 250, 0.3), 0 0 40px rgba(96, 165, 250, 0.1); }
+  50%       { box-shadow: 0 0 30px rgba(96, 165, 250, 0.5), 0 0 60px rgba(96, 165, 250, 0.2); }
+}
+
+/* ── Border gradient rotate ──────────────────────────────────────────────── */
+@keyframes borderRotate {
+  0%   { --angle: 0deg; }
+  100% { --angle: 360deg; }
+}
+
+/* ── Shimmer sweep (skeleton/badge) ─────────────────────────────────────── */
+@keyframes shimmerSweep {
+  0%   { background-position: -200% 0; }
+  100% { background-position:  200% 0; }
+}
+
+/* ── Hero title reveal ───────────────────────────────────────────────────── */
+@keyframes heroTitleIn {
+  from { opacity: 0; transform: translateY(24px) scale(0.97); }
+  to   { opacity: 1; transform: translateY(0)    scale(1); }
+}
+
+/* ── Particle float ──────────────────────────────────────────────────────── */
+@keyframes particleFloat {
+  0%   { transform: translateY(0);      opacity: 0; }
+  10%  { opacity: 1; }
+  90%  { opacity: 1; }
+  100% { transform: translateY(-120px); opacity: 0; }
+}
+
+/* ── Orb drift ───────────────────────────────────────────────────────────── */
+@keyframes orbFloat {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  25%       { transform: translate(30px, -40px) scale(1.05); }
+  50%       { transform: translate(-20px,  30px) scale(0.95); }
+  75%       { transform: translate(40px,   20px) scale(1.03); }
+}
+
+/* ── Utility animation classes ──────────────────────────────────────────── */
+.anim-fade-in   { animation: fadeIn   0.35s ease both; }
+.anim-slide-up  { animation: slideUp  0.4s  cubic-bezier(.25,.46,.45,.94) both; }
+.anim-scale-pop { animation: scalePop 0.4s  cubic-bezier(.34,1.56,.64,1)  both; }

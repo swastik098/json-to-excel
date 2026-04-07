@@ -1,0 +1,167 @@
+/* ─────────────────────────────────────────────────────────────────────────────
+   variables.css — Global CSS Custom Properties
+   DataForge by Swastik — Futuristic neon-space aesthetic
+   Light/dark theme via body.light / body.dark class on <body>.
+───────────────────────────────────────────────────────────────────────────── */
+
+/* ══════════════════════  LIGHT THEME  ═════════════════════════════════════ */
+body.light {
+  /* Page */
+  --bg-page:            #f0f2f8;
+  --bg-page-rgb:        240, 242, 248;
+
+  /* Cards — glassmorphism */
+  --bg-card:            rgba(255, 255, 255, 0.78);
+  --bg-card-solid:      #ffffff;
+  --bg-card-alt:        rgba(244, 246, 255, 0.85);
+  --glass-blur:         blur(20px);
+  --glass-border:       rgba(255, 255, 255, 0.65);
+  --glass-shadow:       0 8px 32px rgba(0, 0, 0, 0.07), 0 1px 0 rgba(255,255,255,0.7) inset;
+
+  /* Chrome */
+  --bg-header:          rgba(10, 8, 30, 0.91);
+  --bg-footer:          #080620;
+  --bg-input:           rgba(255, 255, 255, 0.92);
+
+  /* Text */
+  --text-primary:       #0d0b24;
+  --text-secondary:     #4a4870;
+  --text-muted:         #9491b4;
+  --text-on-dark:       #f1f0ff;
+
+  /* Borders */
+  --border:             rgba(200, 198, 230, 0.8);
+  --border-hover:       rgba(140, 120, 220, 0.7);
+  --border-focus:       #7c3aed;
+  --border-glass:       rgba(255, 255, 255, 0.55);
+
+  /* Shadows */
+  --shadow-xs:  0 1px 2px rgba(0,0,0,.05);
+  --shadow-sm:  0 1px 3px rgba(0,0,0,.07),  0 1px 2px rgba(0,0,0,.04);
+  --shadow-md:  0 4px 12px rgba(0,0,0,.07), 0 2px 4px rgba(0,0,0,.04);
+  --shadow-lg:  0 12px 28px rgba(0,0,0,.09), 0 4px 8px rgba(0,0,0,.05);
+  --shadow-xl:  0 24px 48px rgba(0,0,0,.11), 0 8px 16px rgba(0,0,0,.05);
+  --shadow-glow-blue:   0 0 20px rgba(14, 165, 233, 0.28), 0 0 40px rgba(14, 165, 233, 0.1);
+  --shadow-glow-purple: 0 0 20px rgba(168, 85, 247, 0.28), 0 0 40px rgba(168, 85, 247, 0.1);
+
+  /* Brand — Electric Cyan × Neon Violet */
+  --accent:             #7c3aed;
+  --accent-hover:       #6d28d9;
+  --accent-subtle:      rgba(124, 58, 237, 0.08);
+  --accent-rgb:         124, 58, 237;
+  --accent-cyan:        #0ea5e9;
+  --accent-cyan-rgb:    14, 165, 233;
+
+  /* Status */
+  --success:            #10b981;  --success-subtle: rgba(16,185,129,.09);
+  --warning:            #f59e0b;  --warning-subtle: rgba(245,158,11,.09);
+  --error:              #ef4444;  --error-subtle:   rgba(239,68,68,.09);
+  --info:               #0ea5e9;  --info-subtle:    rgba(14,165,233,.09);
+
+  /* Component */
+  --dropzone-bg:        rgba(244, 244, 255, 0.85);
+  --dropzone-border:    rgba(196, 190, 240, 0.75);
+  --preview-head-bg:    rgba(237, 235, 255, 0.9);
+  --preview-stripe:     rgba(245, 244, 255, 0.8);
+  --scrollbar-thumb:    #c4b5fd;
+  --code-bg:            rgba(237, 235, 255, 0.95);
+
+  /* Gradient mesh */
+  --mesh-opacity:       0.1;
+}
+
+/* ══════════════════════  DARK THEME  ══════════════════════════════════════ */
+body.dark {
+  /* Page */
+  --bg-page:            #03030d;
+  --bg-page-rgb:        3, 3, 13;
+
+  /* Cards — deep space glassmorphism */
+  --bg-card:            rgba(10, 8, 35, 0.65);
+  --bg-card-solid:      #0a0823;
+  --bg-card-alt:        rgba(6, 4, 24, 0.75);
+  --glass-blur:         blur(22px);
+  --glass-border:       rgba(255, 255, 255, 0.05);
+  --glass-shadow:       0 8px 32px rgba(0, 0, 0, 0.5), 0 1px 0 rgba(255,255,255,0.04) inset;
+
+  /* Chrome */
+  --bg-header:          rgba(2, 1, 12, 0.93);
+  --bg-footer:          #02010a;
+  --bg-input:           rgba(12, 10, 40, 0.8);
+
+  /* Text */
+  --text-primary:       #ede9ff;
+  --text-secondary:     #9d99cc;
+  --text-muted:         #5c5880;
+  --text-on-dark:       #f0eeff;
+
+  /* Borders */
+  --border:             rgba(60, 45, 120, 0.5);
+  --border-hover:       rgba(130, 100, 220, 0.6);
+  --border-focus:       #a78bfa;
+  --border-glass:       rgba(255, 255, 255, 0.05);
+
+  /* Shadows */
+  --shadow-xs:  0 1px 2px rgba(0,0,0,.5);
+  --shadow-sm:  0 1px 3px rgba(0,0,0,.6);
+  --shadow-md:  0 4px 12px rgba(0,0,0,.6);
+  --shadow-lg:  0 12px 28px rgba(0,0,0,.7);
+  --shadow-xl:  0 24px 48px rgba(0,0,0,.8);
+  --shadow-glow-blue:   0 0 28px rgba(0, 212, 255, 0.35), 0 0 56px rgba(0, 212, 255, 0.12);
+  --shadow-glow-purple: 0 0 28px rgba(168, 85, 247, 0.35), 0 0 56px rgba(168, 85, 247, 0.12);
+
+  /* Brand — Electric Cyan × Neon Violet (dark-mode brighter) */
+  --accent:             #a78bfa;
+  --accent-hover:       #7c3aed;
+  --accent-subtle:      rgba(167, 139, 250, 0.1);
+  --accent-rgb:         167, 139, 250;
+  --accent-cyan:        #00d4ff;
+  --accent-cyan-rgb:    0, 212, 255;
+
+  /* Status */
+  --success:            #00ff94;  --success-subtle: rgba(0,255,148,.08);
+  --warning:            #fbbf24;  --warning-subtle: rgba(251,191,36,.08);
+  --error:              #ff5f7e;  --error-subtle:   rgba(255,95,126,.08);
+  --info:               #00d4ff;  --info-subtle:    rgba(0,212,255,.08);
+
+  /* Component */
+  --dropzone-bg:        rgba(8, 5, 28, 0.65);
+  --dropzone-border:    rgba(70, 55, 130, 0.55);
+  --preview-head-bg:    rgba(14, 10, 50, 0.8);
+  --preview-stripe:     rgba(8, 5, 28, 0.55);
+  --scrollbar-thumb:    #4c3a8a;
+  --code-bg:            rgba(4, 2, 18, 0.85);
+
+  /* Gradient mesh */
+  --mesh-opacity:       0.07;
+}
+
+/* ══════════════════  THEME-INDEPENDENT TOKENS  ════════════════════════════ */
+:root {
+  /* Border radius scale */
+  --radius-xs:   4px;
+  --radius-sm:   6px;
+  --radius-md:   10px;
+  --radius-lg:   14px;
+  --radius-xl:   20px;
+  --radius-2xl:  28px;
+  --radius-full: 9999px;
+
+  /* Spacing scale */
+  --space-1:  0.25rem;
+  --space-2:  0.5rem;
+  --space-3:  0.75rem;
+  --space-4:  1rem;
+  --space-5:  1.25rem;
+  --space-6:  1.5rem;
+  --space-8:  2rem;
+  --space-10: 2.5rem;
+  --space-12: 3rem;
+  --space-16: 4rem;
+
+  /* Transitions */
+  --transition-fast:   0.15s ease;
+  --transition-normal: 0.22s ease;
+  --transition-slow:   0.35s ease;
+  --transition-spring: 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+}

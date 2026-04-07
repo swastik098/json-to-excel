@@ -1,0 +1,97 @@
+/* DataPreview.css */
+.data-preview {
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  background: var(--bg-card);
+}
+
+.data-preview__header {
+  background: var(--preview-head-bg);
+  border-bottom: 1px solid var(--border);
+  padding: 0.65rem var(--space-4);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-2);
+  flex-wrap: wrap;
+}
+
+.data-preview__label {
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.data-preview__meta {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+}
+
+.data-preview__scroll {
+  overflow-x: auto;
+  overflow-y: auto;
+  max-height: 300px;
+}
+
+/* ── Table ──────────────────────────────────────────────────────────────── */
+.data-preview__table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.79rem;
+  table-layout: auto;
+}
+
+.data-preview__th {
+  background: var(--preview-head-bg);
+  padding: 0.55rem 0.7rem;
+  text-align: left;
+  font-weight: 700;
+  color: var(--text-secondary);
+  border-bottom: 2px solid var(--border);
+  white-space: nowrap;
+  max-width: 160px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+
+.data-preview__td {
+  padding: 0.48rem 0.7rem;
+  border-bottom: 1px solid var(--border);
+  color: var(--text-primary);
+  max-width: 180px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  vertical-align: top;
+}
+
+.data-preview__row:nth-child(even) .data-preview__td {
+  background: var(--preview-stripe);
+}
+
+.data-preview__row:hover .data-preview__td {
+  background: var(--accent-subtle);
+}
+
+.data-preview__rownum {
+  color: var(--text-muted);
+  font-size: 0.72rem;
+  font-variant-numeric: tabular-nums;
+  text-align: right;
+  min-width: 32px;
+  width: 32px;
+}
+
+/* ── Footer ─────────────────────────────────────────────────────────────── */
+.data-preview__more {
+  padding: 0.55rem var(--space-4);
+  font-size: 0.76rem;
+  color: var(--text-muted);
+  text-align: center;
+  border-top: 1px solid var(--border);
+  background: var(--preview-stripe);
+}

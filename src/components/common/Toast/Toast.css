@@ -1,0 +1,76 @@
+/* Toast.css */
+.toast-container {
+  position: fixed;
+  bottom: 1.5rem;
+  right: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+  z-index: 9999;
+  pointer-events: none;
+}
+
+.toast {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.9rem 1.3rem;
+  border-radius: var(--radius-xl);
+  font-size: 0.88rem;
+  font-weight: 500;
+  max-width: 380px;
+  box-shadow: 0 8px 32px rgba(0,0,0,.25), 0 1px 0 rgba(255,255,255,.1) inset;
+  animation: toastIn 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+  pointer-events: auto;
+  cursor: pointer;
+  user-select: none;
+  backdrop-filter: blur(16px) saturate(150%);
+  -webkit-backdrop-filter: blur(16px) saturate(150%);
+  border: 1px solid rgba(255,255,255,.15);
+  line-height: 1.45;
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.toast:hover {
+  transform: translateX(-3px) scale(1.01);
+  box-shadow: 0 12px 40px rgba(0,0,0,.3);
+}
+
+.toast-icon {
+  font-size: 0.9rem;
+  font-weight: 800;
+  width: 24px; height: 24px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255,255,255,.22);
+  flex-shrink: 0;
+}
+
+.toast-message { flex: 1; }
+
+/* Vibrant neon backgrounds */
+.toast-success {
+  background: linear-gradient(135deg, rgba(0,212,255,.88), rgba(14,165,233,.92));
+  color: #03030d;
+  font-weight: 600;
+}
+.toast-error {
+  background: linear-gradient(135deg, rgba(255,95,126,.92), rgba(220,38,38,.92));
+  color: #fff;
+}
+.toast-warning {
+  background: linear-gradient(135deg, rgba(251,191,36,.92), rgba(217,119,6,.92));
+  color: #03030d;
+  font-weight: 600;
+}
+.toast-info {
+  background: linear-gradient(135deg, rgba(124,58,237,.92), rgba(168,85,247,.92));
+  color: #fff;
+}
+
+@media (max-width: 480px) {
+  .toast-container { left: 1rem; right: 1rem; }
+  .toast { max-width: 100%; }
+}

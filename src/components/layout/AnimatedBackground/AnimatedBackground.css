@@ -1,0 +1,144 @@
+/* ─────────────────────────────────────────────────────────────────────────────
+   AnimatedBackground.css
+   Full-page aurora mesh + floating particles + dot grid.
+   Everything is fixed behind content (z-index: 0).
+───────────────────────────────────────────────────────────────────────────── */
+
+/* ── Container ──────────────────────────────────────────────────────────── */
+.anim-bg {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+/* ── Aurora Orbs ────────────────────────────────────────────────────────── */
+.anim-bg__orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  opacity: 0;
+  animation: orbFloat 12s ease-in-out infinite;
+  will-change: transform, opacity;
+}
+
+/* Futuristic neon-space orb opacities */
+body.light .anim-bg__orb { opacity: 0.22; }
+body.dark  .anim-bg__orb { opacity: 0.20; }
+
+/* Orb 1 — Electric Cyan × Deep Indigo — top-left */
+.anim-bg__orb--1 {
+  width: 650px; height: 650px;
+  top: -18%; left: -12%;
+  background: radial-gradient(circle, #00d4ff 0%, #7c3aed 55%, transparent 70%);
+  animation-delay: 0s;
+  animation-duration: 14s;
+}
+/* Orb 2 — Neon Violet × Hot Magenta — top-right */
+.anim-bg__orb--2 {
+  width: 520px; height: 520px;
+  top: 8%; right: -10%;
+  background: radial-gradient(circle, #a855f7 0%, #ec4899 55%, transparent 70%);
+  animation-delay: -4s;
+  animation-duration: 17s;
+}
+/* Orb 3 — Deep Purple × Electric Cyan — center */
+.anim-bg__orb--3 {
+  width: 720px; height: 720px;
+  top: 38%; left: 28%;
+  background: radial-gradient(circle, #6366f1 0%, #00d4ff 55%, transparent 70%);
+  animation-delay: -8s;
+  animation-duration: 19s;
+}
+/* Orb 4 — Neon Pink × Ultra Violet — bottom-left */
+.anim-bg__orb--4 {
+  width: 420px; height: 420px;
+  bottom: 4%; left: 4%;
+  background: radial-gradient(circle, #e879f9 0%, #7c3aed 55%, transparent 70%);
+  animation-delay: -2s;
+  animation-duration: 13s;
+}
+/* Orb 5 — Cyan × Blue — bottom-right */
+.anim-bg__orb--5 {
+  width: 460px; height: 460px;
+  bottom: 12%; right: 4%;
+  background: radial-gradient(circle, #0ea5e9 0%, #4f46e5 55%, transparent 70%);
+  animation-delay: -6s;
+  animation-duration: 15s;
+}
+/* Orb 6 — Teal × Violet — mid-right */
+.anim-bg__orb--6 {
+  width: 360px; height: 360px;
+  top: 52%; left: 62%;
+  background: radial-gradient(circle, #2dd4bf 0%, #a855f7 55%, transparent 70%);
+  animation-delay: -11s;
+  animation-duration: 21s;
+}
+
+@keyframes orbFloat {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  25%       { transform: translate(30px, -40px) scale(1.05); }
+  50%       { transform: translate(-20px, 30px) scale(0.95); }
+  75%       { transform: translate(40px, 20px) scale(1.03); }
+}
+
+/* ── Dot Grid Overlay ───────────────────────────────────────────────────── */
+.anim-bg__grid {
+  position: absolute;
+  inset: 0;
+  background-image:
+    radial-gradient(circle, rgba(148, 163, 184, 0.35) 1px, transparent 1px);
+  background-size: 32px 32px;
+  mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 20%, transparent 100%);
+  -webkit-mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 20%, transparent 100%);
+}
+body.dark .anim-bg__grid {
+  background-image:
+    radial-gradient(circle, rgba(80, 60, 160, 0.5) 1px, transparent 1px);
+}
+
+/* ── Floating Particles ─────────────────────────────────────────────────── */
+.anim-bg__particles {
+  position: absolute;
+  inset: 0;
+}
+
+.particle {
+  position: absolute;
+  border-radius: 50%;
+  background: rgba(0, 212, 255, 0.55);
+  animation: particleFloat linear infinite;
+  will-change: transform, opacity;
+}
+
+body.dark .particle { background: rgba(0, 212, 255, 0.4); }
+
+/* Individual particle sizes, positions, animation durations */
+.particle--1  { width:3px; height:3px; left:8%;  top:20%; animation-duration:8s;  animation-delay:0s;   }
+.particle--2  { width:2px; height:2px; left:15%; top:70%; animation-duration:11s; animation-delay:-3s;  }
+.particle--3  { width:4px; height:4px; left:22%; top:40%; animation-duration:9s;  animation-delay:-6s;  background: rgba(167,139,250,0.5); }
+.particle--4  { width:2px; height:2px; left:30%; top:10%; animation-duration:13s; animation-delay:-1s;  }
+.particle--5  { width:3px; height:3px; left:38%; top:80%; animation-duration:10s; animation-delay:-4s;  background: rgba(16,185,129,0.5); }
+.particle--6  { width:2px; height:2px; left:48%; top:30%; animation-duration:14s; animation-delay:-7s;  }
+.particle--7  { width:4px; height:4px; left:55%; top:60%; animation-duration:8s;  animation-delay:-2s;  background: rgba(236,72,153,0.5); }
+.particle--8  { width:2px; height:2px; left:62%; top:15%; animation-duration:12s; animation-delay:-9s;  }
+.particle--9  { width:3px; height:3px; left:70%; top:75%; animation-duration:9s;  animation-delay:-5s;  background: rgba(245,158,11,0.5); }
+.particle--10 { width:2px; height:2px; left:78%; top:45%; animation-duration:15s; animation-delay:-3s;  }
+.particle--11 { width:3px; height:3px; left:85%; top:25%; animation-duration:11s; animation-delay:-8s;  background: rgba(6,182,212,0.5); }
+.particle--12 { width:2px; height:2px; left:92%; top:65%; animation-duration:10s; animation-delay:-1s;  }
+.particle--13 { width:4px; height:4px; left:5%;  top:55%; animation-duration:13s; animation-delay:-6s;  background: rgba(167,139,250,0.5); }
+.particle--14 { width:2px; height:2px; left:18%; top:88%; animation-duration:9s;  animation-delay:-4s;  }
+.particle--15 { width:3px; height:3px; left:42%; top:5%;  animation-duration:16s; animation-delay:-2s;  background: rgba(16,185,129,0.5); }
+.particle--16 { width:2px; height:2px; left:58%; top:92%; animation-duration:8s;  animation-delay:-7s;  }
+.particle--17 { width:3px; height:3px; left:72%; top:35%; animation-duration:12s; animation-delay:-5s;  background: rgba(59,130,246,0.5); }
+.particle--18 { width:2px; height:2px; left:88%; top:8%;  animation-duration:14s; animation-delay:-3s;  }
+.particle--19 { width:4px; height:4px; left:25%; top:50%; animation-duration:10s; animation-delay:-9s;  background: rgba(236,72,153,0.5); }
+.particle--20 { width:2px; height:2px; left:95%; top:50%; animation-duration:11s; animation-delay:-1s;  }
+
+@keyframes particleFloat {
+  0%   { transform: translateY(0px)   opacity(0); opacity: 0; }
+  10%  { opacity: 1; }
+  90%  { opacity: 1; }
+  100% { transform: translateY(-120px) opacity(0); opacity: 0; }
+}
