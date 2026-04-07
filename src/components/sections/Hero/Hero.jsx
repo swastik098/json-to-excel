@@ -37,9 +37,7 @@ export function Hero({ totalConversions, shouldAnimate = false }) {
             <span key={f} className="hero__badge-format">
               {f}
               {i < FORMAT_BADGES.length - 1 && (
-                <span className="hero__badge-sep" aria-hidden="true">
-                  ·
-                </span>
+                <span className="hero__badge-sep" aria-hidden="true">·</span>
               )}
             </span>
           ))}

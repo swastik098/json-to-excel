@@ -7,6 +7,12 @@
   backdrop-filter: blur(28px) saturate(200%);
   -webkit-backdrop-filter: blur(28px) saturate(200%);
   border-bottom: 1px solid rgba(167, 139, 250, 0.08);
+  transition: background var(--transition-slow), border-color var(--transition-slow), box-shadow var(--transition-slow);
+}
+
+body.light .header {
+  border-bottom: 1px solid rgba(124, 58, 237, 0.1);
+  box-shadow: 0 1px 20px rgba(0,0,0,.05);
 }
 
 /* Animated neon gradient underline */
@@ -79,12 +85,12 @@
 }
 
 .header-tagline {
-  color: #3d3870;
+  color: var(--text-muted);
   font-size: 0.68rem;
   font-weight: 500;
   letter-spacing: 0.09em;
   text-transform: uppercase;
-  border-left: 1px solid rgba(100, 80, 180, 0.3);
+  border-left: 1px solid var(--border);
   padding-left: var(--space-3);
   white-space: nowrap;
 }
@@ -100,9 +106,9 @@
   display: flex;
   align-items: center;
   gap: 0.4rem;
-  background: rgba(167, 139, 250, 0.06);
-  border: 1px solid rgba(167, 139, 250, 0.18);
-  color: #9d99cc;
+  background: rgba(124, 58, 237, 0.06);
+  border: 1px solid rgba(124, 58, 237, 0.18);
+  color: var(--text-secondary);
   padding: 0.4rem 1rem;
   border-radius: var(--radius-full);
   font-size: 0.82rem;
@@ -118,10 +124,17 @@
 }
 
 .theme-toggle:hover {
+  background: rgba(124, 58, 237, 0.1);
+  border-color: rgba(124, 58, 237, 0.35);
+  color: var(--accent);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 16px rgba(124, 58, 237, 0.2);
+}
+
+body.dark .theme-toggle:hover {
   background: rgba(0, 212, 255, 0.1);
   border-color: rgba(0, 212, 255, 0.35);
   color: #00d4ff;
-  transform: translateY(-1px);
   box-shadow: 0 4px 16px rgba(0, 212, 255, 0.2);
 }
 

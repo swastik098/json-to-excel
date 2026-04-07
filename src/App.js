@@ -4,7 +4,7 @@
  * Business logic lives in hooks; UI lives in components.
  */
 
-import React, { useState, useCallback, useRef } from "react";
+import React, { useState, useCallback } from "react";
 
 // ── Providers & Context ──────────────────────────────────────────────────────
 import { ToastProvider } from "./context/ToastContext";
@@ -19,6 +19,7 @@ import { AnimatedBackground } from "./components/layout/AnimatedBackground/Anima
 import { Hero } from "./components/sections/Hero/Hero";
 import { Features } from "./components/sections/Features/Features";
 import { History } from "./components/sections/History/History";
+import { HowItWorks } from "./components/sections/HowItWorks/HowItWorks";
 
 // ── Converter ────────────────────────────────────────────────────────────────
 import { FormatSelector } from "./components/converter/FormatSelector/FormatSelector";
@@ -36,23 +37,14 @@ function AppContent() {
   const [activeConversion, setActiveConversion] = useState(CONVERSIONS[0]);
   const [history, setHistory] = useState([]);
   const [totalConversions, setTotalConversions] = useState(0);
-
-  // Optional: Track if we should show the animated counter
   const [shouldAnimate, setShouldAnimate] = useState(false);
 
-  /**
-   * Called by ConverterPanel (via useConverter) after a successful conversion.
-   * We lift state here so History and StatsBar stay in sync.
-   */
   const handleConversionComplete = useCallback((entry) => {
     setHistory((prev) => [entry, ...prev.slice(0, 9)]);
     setTotalConversions((n) => {
-      const newTotal = n + 1;
-      // Trigger animation on every increment
       setShouldAnimate(true);
-      // Reset animation flag after a short delay
       setTimeout(() => setShouldAnimate(false), 800);
-      return newTotal;
+      return n + 1;
     });
   }, []);
 
@@ -62,33 +54,22 @@ function AppContent() {
 
   return (
     <div className="app">
-      {/* Full-page animated aurora background */}
       <AnimatedBackground />
-
       <Header />
-
       <Hero totalConversions={totalConversions} shouldAnimate={shouldAnimate} />
 
       <main className="page-content" id="main-content">
-        {/* Format type picker */}
-        <FormatSelector
-          active={activeConversion}
-          onChange={handleFormatChange}
-        />
+        <FormatSelector active={activeConversion} onChange={handleFormatChange} />
 
-        {/* Conversion engine panel */}
         <ConverterPanel
-          key={
-            activeConversion.id
-          } /* remount on format change to reset state */
+          key={activeConversion.id}
           conversion={activeConversion}
           onComplete={handleConversionComplete}
         />
 
-        {/* Informational sections */}
         <Features />
+        <HowItWorks />
 
-        {/* Conversion history (visible only after first conversion) */}
         <History items={history} />
       </main>
 
@@ -97,7 +78,6 @@ function AppContent() {
   );
 }
 
-// ── Root export (wraps with Providers) ───────────────────────────────────────
 export default function App() {
   return (
     <ThemeProvider>

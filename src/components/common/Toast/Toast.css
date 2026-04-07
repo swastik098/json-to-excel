@@ -90,18 +90,8 @@
 .toast-info {
   background: linear-gradient(
     135deg,
-    rgba(124, 58, 237, 0.92),
-    rgba(168, 85, 247, 0.92)
+    rgba(124, 58, 237, 0.88),
+    rgba(99, 102, 241, 0.92)
   );
   color: #fff;
-}
-
-@media (max-width: 480px) {
-  .toast-container {
-    left: 1rem;
-    right: 1rem;
-  }
-  .toast {
-    max-width: 100%;
-  }
 }

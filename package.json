@@ -36,11 +36,5 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  },
-  "engines": {
-    "node": "24.14.1"
-  },
-  "devDependencies": {
-    "eslint-plugin-jsx-a11y": "^6.10.2"
   }
 }

@@ -61,18 +61,15 @@ function ToastPortal({ toasts, onRemove }) {
           title="Click or press Enter/Space to dismiss"
           style={{
             width: "100%",
-            textAlign: "left",
-            cursor: "pointer",
-            background: "none",
             border: "none",
-            display: "flex",
-            alignItems: "center",
-            gap: "8px",
-            padding: "12px 16px",
+            textAlign: "left",
+            fontFamily: "inherit",
+            fontSize: "inherit",
           }}
+          aria-live="polite"
         >
           <span className="toast-icon" aria-hidden="true">
-            {ICONS[t.type] ?? "ℹ"}
+            {ICONS[t.type] || ICONS.info}
           </span>
           <span className="toast-message">{t.message}</span>
         </button>
