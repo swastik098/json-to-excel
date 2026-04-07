@@ -21,7 +21,7 @@ export function ToastProvider({ children }) {
     setToasts((prev) => [...prev, { id, message, type }]);
     setTimeout(
       () => setToasts((prev) => prev.filter((t) => t.id !== id)),
-      duration
+      duration,
     );
   }, []);
 
@@ -42,21 +42,40 @@ const ICONS = { success: "✓", error: "✕", warning: "⚠", info: "ℹ" };
 
 function ToastPortal({ toasts, onRemove }) {
   if (toasts.length === 0) return null;
+
+  const handleKeyDown = (e, id) => {
+    if (e.key === "Enter" || e.key === " ") {
+      e.preventDefault();
+      onRemove(id);
+    }
+  };
+
   return (
-    <div className="toast-container" role="region" aria-label="Notifications">
+    <div className="toast-container" aria-label="Notifications">
       {toasts.map((t) => (
-        <div
+        <button
           key={t.id}
           className={`toast toast-${t.type}`}
-          role="alert"
           onClick={() => onRemove(t.id)}
-          title="Click to dismiss"
+          onKeyDown={(e) => handleKeyDown(e, t.id)}
+          title="Click or press Enter/Space to dismiss"
+          style={{
+            width: "100%",
+            textAlign: "left",
+            cursor: "pointer",
+            background: "none",
+            border: "none",
+            display: "flex",
+            alignItems: "center",
+            gap: "8px",
+            padding: "12px 16px",
+          }}
         >
           <span className="toast-icon" aria-hidden="true">
             {ICONS[t.type] ?? "ℹ"}
           </span>
           <span className="toast-message">{t.message}</span>
-        </div>
+        </button>
       ))}
     </div>
   );
