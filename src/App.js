@@ -59,7 +59,10 @@ function AppContent() {
       <Hero totalConversions={totalConversions} shouldAnimate={shouldAnimate} />
 
       <main className="page-content" id="main-content">
-        <FormatSelector active={activeConversion} onChange={handleFormatChange} />
+        <FormatSelector
+          active={activeConversion}
+          onChange={handleFormatChange}
+        />
 
         <ConverterPanel
           key={activeConversion.id}
@@ -67,8 +70,8 @@ function AppContent() {
           onComplete={handleConversionComplete}
         />
 
-        <Features />
         <HowItWorks />
+        <Features />
 
         <History items={history} />
       </main>
