@@ -14,9 +14,9 @@ export function HowItWorks() {
       <ol className="steps-grid">
         {HOW_IT_WORKS_STEPS.map((step) => (
           <li key={step.num} className="step-card">
-            <span className="step-card__num" aria-label={`Step ${step.num}`}>
+            {/* <span className="step-card__num" aria-label={`Step ${step.num}`}>
               {step.num}
-            </span>
+            </span> */}
             <span className="step-card__icon" aria-hidden="true">
               {step.icon}
             </span>
