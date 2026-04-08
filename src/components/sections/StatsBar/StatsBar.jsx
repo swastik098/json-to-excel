@@ -120,7 +120,10 @@ export function StatsBar({ totalConversions = 0, shouldAnimate = false }) {
 
       {/* ── Live counter ─────────────────────────────────── */}
       <li className="stat-card stat-card--live">
-        <AnimatedCounter value={liveCount} />
+        <AnimatedCounter 
+          {/* value={liveCount}  */}
+          value="10K"
+          />
         <span className="stat-card__label">
           <span className="stat-card__live-dot" aria-hidden="true" />
           Conversions
