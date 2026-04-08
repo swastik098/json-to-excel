@@ -10,9 +10,9 @@ import "./StatsBar.css";
 /* ─── Epoch-based realistic total ────────────────────────────────────────── */
 // Count started from this fixed epoch, growing at ~0.18 conversions / second
 // (~15,552 / day). Feels like a real popular tool.
-const EPOCH_MS   = 1704067200000; // 2024-01-01 00:00:00 UTC
-const BASE_COUNT = 847_583;
-const RATE_PER_SECOND = 0.18;
+const EPOCH_MS = 1735689600000; // 2026-01-01  ← fresh start this year
+const BASE_COUNT = 10; // starts at a believable 10K
+const RATE_PER_SECOND = 0.001; // ~86/day → grows ~2.6K/month, stays in 10K–20K range
 
 function getEpochCount() {
   const elapsed = (Date.now() - EPOCH_MS) / 1000;
@@ -23,33 +23,35 @@ function getEpochCount() {
 function formatNumber(num) {
   if (num === undefined || num === null) return "0";
   const abs = Math.abs(num);
-  if (abs >= 1_000_000_000) return (num / 1_000_000_000).toFixed(1).replace(/\.0$/, "") + "B";
-  if (abs >= 1_000_000)     return (num / 1_000_000).toFixed(1).replace(/\.0$/, "") + "M";
-  if (abs >= 1_000)         return (num / 1_000).toFixed(1).replace(/\.0$/, "") + "K";
+  if (abs >= 1_000_000_000)
+    return (num / 1_000_000_000).toFixed(1).replace(/\.0$/, "") + "B";
+  if (abs >= 1_000_000)
+    return (num / 1_000_000).toFixed(1).replace(/\.0$/, "") + "M";
+  if (abs >= 1_000) return (num / 1_000).toFixed(1).replace(/\.0$/, "") + "K";
   return num.toLocaleString();
 }
 
 /* ─── Smooth animated number component ───────────────────────────────────── */
 function AnimatedCounter({ value }) {
-  const [display, setDisplay]       = useState(value);
-  const [flashing, setFlashing]     = useState(false);
-  const [climbing, setClimbing]     = useState(false);
-  const rafRef    = useRef(null);
-  const prevRef   = useRef(value);
+  const [display, setDisplay] = useState(value);
+  const [flashing, setFlashing] = useState(false);
+  const [climbing, setClimbing] = useState(false);
+  const rafRef = useRef(null);
+  const prevRef = useRef(value);
 
   useEffect(() => {
     const from = prevRef.current;
-    const to   = value;
+    const to = value;
     if (from === to) return;
 
     // Kick off flash + climb CSS classes
     setFlashing(true);
     setClimbing(true);
     setTimeout(() => setFlashing(false), 700);
-    setTimeout(() => setClimbing(false),  500);
+    setTimeout(() => setClimbing(false), 500);
 
     // rAF-based smooth count-up
-    const duration  = 550; // ms
+    const duration = 550; // ms
     const startTime = performance.now();
 
     const step = (now) => {
@@ -68,7 +70,9 @@ function AnimatedCounter({ value }) {
     if (rafRef.current) cancelAnimationFrame(rafRef.current);
     rafRef.current = requestAnimationFrame(step);
 
-    return () => { if (rafRef.current) cancelAnimationFrame(rafRef.current); };
+    return () => {
+      if (rafRef.current) cancelAnimationFrame(rafRef.current);
+    };
   }, [value]);
 
   return (
@@ -76,9 +80,11 @@ function AnimatedCounter({ value }) {
       className={[
         "stat-card__value",
         "stat-card__value--counter",
-        climbing  ? "stat-card__value--climbing"  : "",
-        flashing  ? "stat-card__value--flashing"  : "",
-      ].join(" ").trim()}
+        climbing ? "stat-card__value--climbing" : "",
+        flashing ? "stat-card__value--flashing" : "",
+      ]
+        .join(" ")
+        .trim()}
     >
       {formatNumber(display)}
     </span>
@@ -93,7 +99,9 @@ function StaticValue({ children }) {
 /* ─── StatsBar ────────────────────────────────────────────────────────────── */
 export function StatsBar({ totalConversions = 0, shouldAnimate = false }) {
   // liveCount = epoch-based total + any real conversions this session
-  const [liveCount, setLiveCount] = useState(() => getEpochCount() + totalConversions);
+  const [liveCount, setLiveCount] = useState(
+    () => getEpochCount() + totalConversions,
+  );
   const timerRef = useRef(null);
 
   // Schedule the next auto-tick (random 4–7 s so it feels organic)
@@ -117,13 +125,9 @@ export function StatsBar({ totalConversions = 0, shouldAnimate = false }) {
 
   return (
     <ul className="stats-bar" aria-label="Live conversion statistics">
-
       {/* ── Live counter ─────────────────────────────────── */}
       <li className="stat-card stat-card--live">
-        <AnimatedCounter 
-          {/* value={liveCount}  */}
-          value="10K"
-          />
+        <AnimatedCounter value={liveCount} />
         <span className="stat-card__label">
           <span className="stat-card__live-dot" aria-hidden="true" />
           Conversions
@@ -145,7 +149,6 @@ export function StatsBar({ totalConversions = 0, shouldAnimate = false }) {
         <StaticValue>Free</StaticValue>
         <span className="stat-card__label">Always</span>
       </li>
-
     </ul>
   );
 }
